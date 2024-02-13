@@ -1,5 +1,7 @@
 package com.frost.gasgo.userhub.controller;
 
+import com.frost.gasgo.userhub.customexpection.UserAlreadyExistException;
+import com.frost.gasgo.userhub.customexpection.UserNotFoundException;
 import com.frost.gasgo.userhub.entity.UserData;
 import com.frost.gasgo.userhub.service.UserDataServiceImpl;
 import com.frost.gasgo.userhub.wrapper.UserDataWrapper;
@@ -16,13 +18,13 @@ public class UserDataController {
     private UserDataServiceImpl userDataService;
 
     @PostMapping("adduser")
-    public ResponseEntity<UserData> addUser(@RequestBody UserData userData){
+    public ResponseEntity<UserData> addUser(@RequestBody UserData userData) throws UserAlreadyExistException {
         return new ResponseEntity<>(userDataService.addUser(userData),HttpStatus.CREATED);
     }
 
     @GetMapping("getUser/{userId}")
-    public ResponseEntity<UserDataWrapper> getUser(@PathVariable long userId){
+    public ResponseEntity<UserDataWrapper> getUser(@PathVariable long userId) throws UserNotFoundException {
         System.out.println("user id " + userId);
-        return new ResponseEntity<>(userDataService.getUserDataById(userId),HttpStatus.OK);
+        return userDataService.getUserDataById(userId);
     }
 }

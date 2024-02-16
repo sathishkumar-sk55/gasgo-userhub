@@ -1,16 +1,16 @@
 package com.frost.gasgo.userhub.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @Table(schema = "userhub")
 public class UserData {
 
@@ -29,4 +29,8 @@ public class UserData {
 
     @Column(length = 30)
     private String lastName;
+
+    @OneToMany(mappedBy = "userData")
+    private List<AddressData> addressData;
+
 }

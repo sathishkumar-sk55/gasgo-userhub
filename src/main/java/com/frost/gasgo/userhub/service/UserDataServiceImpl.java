@@ -5,7 +5,6 @@ import com.frost.gasgo.userhub.customexpection.UserNotFoundException;
 import com.frost.gasgo.userhub.entity.UserData;
 import com.frost.gasgo.userhub.repository.UserDataRepository;
 import com.frost.gasgo.userhub.wrapper.UserDataWrapper;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -19,25 +18,31 @@ public class UserDataServiceImpl {
     @Autowired
     private UserDataRepository userDataRepository;
 
-    public UserData addUser(UserData userData) throws UserAlreadyExistException {
+    public ResponseEntity<UserDataWrapper> addUser(UserData userData) throws UserAlreadyExistException {
         try {
-            return userDataRepository.save(userData);
+            UserData SavedUserData =  userDataRepository.save(userData);
+
+            UserDataWrapper userDataWrapper =
+                    UserDataWrapper
+                            .builder()
+                            .userId(SavedUserData.getUserId())
+                            .username(SavedUserData.getUsername())
+                            .firstName(SavedUserData.getFirstName())
+                            .lastName(SavedUserData.getLastName())
+                            .build();
+
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(userDataWrapper);
         }
         catch (DataIntegrityViolationException exception){
-
             throw new UserAlreadyExistException("User already exist");
         }
-
-
     }
 
     public ResponseEntity<UserDataWrapper> getUserDataById(Long userId) throws UserNotFoundException {
 
-        Optional<UserData> user =  userDataRepository.findById(userId);
-        if (user.isEmpty()){
-            throw new UserNotFoundException("User not found in the DataBase");
-        }
-        UserData userData = user.get();
+        UserData userData =  userDataRepository.findById(userId).orElseThrow(() ->new UserNotFoundException("User not found in the DataBase"));
+
         UserDataWrapper userDataWrapper =
                 UserDataWrapper
                         .builder()

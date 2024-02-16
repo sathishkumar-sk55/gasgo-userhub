@@ -1,6 +1,6 @@
 package com.frost.gasgo.userhub.customexpection;
 
-public class UserAlreadyExistException extends Exception{
+public class UserAlreadyExistException extends Exception {
     public UserAlreadyExistException() {
     }
 

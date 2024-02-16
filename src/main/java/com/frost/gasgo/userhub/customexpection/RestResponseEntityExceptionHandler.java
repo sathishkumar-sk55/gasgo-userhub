@@ -12,14 +12,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorMessage> departmentNotFoundException(UserNotFoundException exception, WebRequest request){
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+    public ResponseEntity<ErrorMessage> departmentNotFoundException(UserNotFoundException exception, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
 
     @ExceptionHandler(UserAlreadyExistException.class)
-    public ResponseEntity<ErrorMessage> UserAlreadyExistException(UserAlreadyExistException exception, WebRequest request){
-        ErrorMessage message = new ErrorMessage(HttpStatus.CONFLICT,exception.getMessage());
+    public ResponseEntity<ErrorMessage> UserAlreadyExistException(UserAlreadyExistException exception, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(HttpStatus.CONFLICT, exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
+    }
+
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<ErrorMessage> AddressNotFoundException(AddressNotFoundException exception, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
 }

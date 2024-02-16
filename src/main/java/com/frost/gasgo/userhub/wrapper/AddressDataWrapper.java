@@ -1,7 +1,5 @@
 package com.frost.gasgo.userhub.wrapper;
 
-import com.frost.gasgo.userhub.entity.UserData;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

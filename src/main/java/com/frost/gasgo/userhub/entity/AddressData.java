@@ -1,7 +1,6 @@
 package com.frost.gasgo.userhub.entity;
 
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,7 +35,7 @@ public class AddressData {
     private Long pincode;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "userId")
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
     private UserData userData;
 
 }

@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserDataServiceImpl {
     @Autowired
@@ -20,7 +18,7 @@ public class UserDataServiceImpl {
 
     public ResponseEntity<UserDataWrapper> addUser(UserData userData) throws UserAlreadyExistException {
         try {
-            UserData SavedUserData =  userDataRepository.save(userData);
+            UserData SavedUserData = userDataRepository.save(userData);
 
             UserDataWrapper userDataWrapper =
                     UserDataWrapper
@@ -33,15 +31,14 @@ public class UserDataServiceImpl {
 
 
             return ResponseEntity.status(HttpStatus.CREATED).body(userDataWrapper);
-        }
-        catch (DataIntegrityViolationException exception){
+        } catch (DataIntegrityViolationException exception) {
             throw new UserAlreadyExistException("User already exist");
         }
     }
 
     public ResponseEntity<UserDataWrapper> getUserDataById(Long userId) throws UserNotFoundException {
 
-        UserData userData =  userDataRepository.findById(userId).orElseThrow(() ->new UserNotFoundException("User not found in the DataBase"));
+        UserData userData = userDataRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found in the DataBase"));
 
         UserDataWrapper userDataWrapper =
                 UserDataWrapper
@@ -51,6 +48,6 @@ public class UserDataServiceImpl {
                         .firstName(userData.getFirstName())
                         .lastName(userData.getLastName())
                         .build();
-        return new ResponseEntity<UserDataWrapper>(userDataWrapper,HttpStatus.OK);
+        return new ResponseEntity<UserDataWrapper>(userDataWrapper, HttpStatus.OK);
     }
 }

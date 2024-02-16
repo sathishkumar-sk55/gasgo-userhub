@@ -18,7 +18,7 @@ public class UserData {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long userId;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(columnDefinition = "TEXT")

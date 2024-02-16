@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @EntityScan("com.frost.gasgo.userhub.entity")
 public class UserhubApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserhubApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UserhubApplication.class, args);
+    }
 
 }

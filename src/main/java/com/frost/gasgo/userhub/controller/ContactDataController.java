@@ -26,18 +26,18 @@ public class ContactDataController {
         return contactDataService.addContact(userId, contactData);
     }
 
-    @GetMapping("getConatactByContactId/{contactId}")
+    @GetMapping("getContactByContactId/{contactId}")
     public ResponseEntity<ContactDataWrapper> getAddressByAddressId(@PathVariable long contactId) throws ContactNotFoundException {
         return contactDataService.getConatactByContactId(contactId);
     }
 
-    @GetMapping("getAllConatactByUserId/{userId}")
+    @GetMapping("getAllContactByUserId/{userId}")
     public ResponseEntity<List<ContactDataWrapper>> getAllConatactByUserId(@PathVariable long userId) throws UserNotFoundException {
         return contactDataService.getAllConatactByUserId(userId);
     }
 
-    @DeleteMapping("deletecontactIdBycontactIdId/{contactId}")
-    public ResponseEntity deletecontactIdBycontactIdId(@PathVariable long contactId) throws AddressNotFoundException {
+    @DeleteMapping("deleteContactIdByContactIdId/{contactId}")
+    public ResponseEntity deleteContactIdByContactIdId(@PathVariable long contactId) throws AddressNotFoundException {
         return contactDataService.deletecontactIdBycontactIdId(contactId);
     }
 

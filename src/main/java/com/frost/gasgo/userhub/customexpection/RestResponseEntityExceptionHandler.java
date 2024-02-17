@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorMessage> departmentNotFoundException(UserNotFoundException exception, WebRequest request) {
+    public ResponseEntity<ErrorMessage> UserNotFoundException(UserNotFoundException exception, WebRequest request) {
         ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
@@ -25,6 +25,12 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(AddressNotFoundException.class)
     public ResponseEntity<ErrorMessage> AddressNotFoundException(AddressNotFoundException exception, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
+
+    @ExceptionHandler(ContactNotFoundException.class)
+    public ResponseEntity<ErrorMessage> ContactNotFoundException(ContactNotFoundException exception, WebRequest request) {
         ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }

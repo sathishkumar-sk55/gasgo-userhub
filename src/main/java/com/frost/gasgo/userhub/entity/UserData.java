@@ -33,4 +33,7 @@ public class UserData {
     @OneToMany(mappedBy = "userData")
     private List<AddressData> addressData;
 
+    @OneToMany(mappedBy = "userData")
+    private List<ContactData> contactData;
+
 }

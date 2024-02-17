@@ -39,6 +39,7 @@ public class ContactDataServiceImpl {
                 ContactDataWrapper
                         .builder()
                         .contactId(savedContactData.getContactId())
+                        .contactType(savedContactData.getContactType())
                         .mobileNumber1(savedContactData.getMobileNumber1())
                         .mobileNumber2(savedContactData.getMobileNumber2())
                         .email(savedContactData.getEmail())
@@ -54,6 +55,7 @@ public class ContactDataServiceImpl {
         ContactDataWrapper contactDataWrapper =
                 ContactDataWrapper.builder()
                         .contactId(fetechedContactData.getContactId())
+                        .contactType(fetechedContactData.getContactType())
                         .mobileNumber1(fetechedContactData.getMobileNumber1())
                         .mobileNumber2(fetechedContactData.getMobileNumber2())
                         .email(fetechedContactData.getEmail())
@@ -73,6 +75,7 @@ public class ContactDataServiceImpl {
             ContactDataWrapper contactDataWrapper =
                     ContactDataWrapper.builder()
                             .contactId(contactData.getContactId())
+                            .contactType(contactData.getContactType())
                             .mobileNumber1(contactData.getMobileNumber1())
                             .mobileNumber2(contactData.getMobileNumber2())
                             .email(contactData.getEmail())

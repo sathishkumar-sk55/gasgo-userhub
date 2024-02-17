@@ -16,6 +16,8 @@ public class AddressData {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long addressId;
 
+    private String addressType;
+
     @Column(length = 100)
     private String addressLine1;
 

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AddressDataWrapper {
     private Long addressId;
+    private String addressType;
     private String addressLine1;
     private String addressLine2;
     private String city;

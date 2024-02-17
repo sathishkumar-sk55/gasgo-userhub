@@ -34,6 +34,7 @@ public class AddressDataServiceImpl {
         AddressDataWrapper addressDataWrapper =
                 AddressDataWrapper.builder()
                         .addressId(savedAddressData.getAddressId())
+                        .addressType(savedAddressData.getAddressType())
                         .addressLine1(savedAddressData.getAddressLine1())
                         .addressLine2(savedAddressData.getAddressLine2())
                         .city(savedAddressData.getCity())
@@ -52,6 +53,7 @@ public class AddressDataServiceImpl {
         AddressDataWrapper addressDataWrapper =
                 AddressDataWrapper.builder()
                         .addressId(fetechedAddressData.getAddressId())
+                        .addressType(fetechedAddressData.getAddressType())
                         .addressLine1(fetechedAddressData.getAddressLine1())
                         .addressLine2(fetechedAddressData.getAddressLine2())
                         .city(fetechedAddressData.getCity())
@@ -74,6 +76,7 @@ public class AddressDataServiceImpl {
             AddressDataWrapper addressDataWrapper =
                     AddressDataWrapper.builder()
                             .addressId(addressData.getAddressId())
+                            .addressType(addressData.getAddressType())
                             .addressLine1(addressData.getAddressLine1())
                             .addressLine2(addressData.getAddressLine2())
                             .city(addressData.getCity())

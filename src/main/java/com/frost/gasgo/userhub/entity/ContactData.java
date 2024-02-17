@@ -17,6 +17,8 @@ public class ContactData {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long contactId;
 
+    private String contactType;
+
     @Column(length = 12)
     private String mobileNumber1;
 

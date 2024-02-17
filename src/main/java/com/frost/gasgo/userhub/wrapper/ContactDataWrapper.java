@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ContactDataWrapper {
     private long contactId;
+    private String contactType;
     private String mobileNumber1;
     private String mobileNumber2;
     private String email;

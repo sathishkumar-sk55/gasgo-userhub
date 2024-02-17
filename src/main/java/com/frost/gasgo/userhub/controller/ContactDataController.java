@@ -36,4 +36,14 @@ public class ContactDataController {
         return contactDataService.getAllConatactByUserId(userId);
     }
 
+    @DeleteMapping("deletecontactIdBycontactIdId/{contactId}")
+    public ResponseEntity deletecontactIdBycontactIdId(@PathVariable long contactId) throws AddressNotFoundException {
+        return contactDataService.deletecontactIdBycontactIdId(contactId);
+    }
+
+    @PatchMapping("updateContactById/{ContactId}")
+    public ResponseEntity updateAddressById(@PathVariable long ContactId, @RequestBody ContactDataWrapper contactDataWrapper) throws AddressNotFoundException, ContactNotFoundException {
+        return contactDataService.updateAddressById(ContactId, contactDataWrapper);
+    }
+
 }

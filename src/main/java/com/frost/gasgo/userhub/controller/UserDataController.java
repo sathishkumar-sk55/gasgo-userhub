@@ -23,7 +23,6 @@ public class UserDataController {
 
     @GetMapping("getUser/{userId}")
     public ResponseEntity<UserDataWrapper> getUser(@PathVariable long userId) throws UserNotFoundException {
-
         return userDataService.getUserDataById(userId);
     }
 

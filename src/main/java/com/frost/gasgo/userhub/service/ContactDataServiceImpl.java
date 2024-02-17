@@ -86,4 +86,39 @@ public class ContactDataServiceImpl {
 
         return ResponseEntity.status(HttpStatus.OK).body(fetechedContactDataWrapper);
     }
+
+    public ResponseEntity deletecontactIdBycontactIdId(long contactId) throws AddressNotFoundException {
+        contactDataRepository.findById(contactId).orElseThrow(() -> new AddressNotFoundException("Contact with ContactID : " + contactId + " Not Found"));
+        contactDataRepository.deleteById(contactId);
+
+        return ResponseEntity.status(HttpStatus.OK).body("deleted");
+    }
+
+    public ResponseEntity updateAddressById(long contactId, ContactDataWrapper contactDataWrapper) throws ContactNotFoundException {
+        ContactData fetchedContactData = contactDataRepository.findById(contactId).orElseThrow(() -> new ContactNotFoundException("Contact with ContactID : " + contactId + " Not Found"));
+
+        if (contactDataWrapper.getContactType() != null) {
+            fetchedContactData.setContactType(contactDataWrapper.getContactType());
+        }
+
+        if (contactDataWrapper.getMobileNumber1() != null) {
+            fetchedContactData.setMobileNumber1(contactDataWrapper.getMobileNumber1());
+        }
+
+        if (contactDataWrapper.getMobileNumber2() != null) {
+            fetchedContactData.setMobileNumber2(contactDataWrapper.getMobileNumber2());
+        }
+
+        if (contactDataWrapper.getEmail() != null) {
+            fetchedContactData.setEmail(contactDataWrapper.getEmail());
+        }
+
+        contactDataRepository.save(fetchedContactData);
+
+        contactDataWrapper.setContactId(contactId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(contactDataWrapper);
+
+    }
+
 }

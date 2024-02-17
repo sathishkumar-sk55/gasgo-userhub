@@ -36,6 +36,6 @@ public class AddressData {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "userId")
-    private UserData userData;
+        private UserData userData;
 
 }

@@ -24,13 +24,24 @@ public class AddressDataController {
         return addressDataService.addAddress(userId, addressData);
     }
 
-    @GetMapping("getAddressbyAddressId/{addressId}")
+    @GetMapping("getAddressByAddressId/{addressId}")
     public ResponseEntity<AddressDataWrapper> getAddressbyAddressId(@PathVariable long addressId) throws AddressNotFoundException {
         return addressDataService.getAddressbyAddressId(addressId);
     }
 
-    @GetMapping("getAllAddressbyUserId/{userId}")
+    @GetMapping("getAllAddressByUserId/{userId}")
     public ResponseEntity<List<AddressDataWrapper>> getAllAddressbyUserId(@PathVariable long userId) throws UserNotFoundException {
         return addressDataService.getAllAddressbyUserId(userId);
+    }
+
+    @DeleteMapping("deleteAddressByAddressId/{addressId}")
+    public ResponseEntity deleteAddressByAddressId(@PathVariable long addressId) throws AddressNotFoundException {
+
+        return addressDataService.deleteAddressByAddressId(addressId);
+    }
+
+    @PatchMapping("updateAddressById/{addressId}")
+    public ResponseEntity updateAddressById(@PathVariable long addressId, @RequestBody AddressDataWrapper addressDataWrapper) throws AddressNotFoundException {
+        return addressDataService.updateAddressById(addressId, addressDataWrapper);
     }
 }

@@ -1,15 +1,11 @@
-
-
 server:
-  port: 8001
+  port: 8002
 spring:
-  profiles:
-    active: dev
   datasource:
     driver-class-name: org.postgresql.Driver
-    password: frost123
-    url: jdbc:postgresql://localhost:5432/gasgodb
-    username: postgres
+    password: aishu123
+    url: jdbc:postgresql://postgres:5432/gasgodb
+    username: aishu
   jpa:
     database-platform: org.hibernate.dialect.PostgresPlusDialect
     hibernate:

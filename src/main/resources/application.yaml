@@ -1,10 +1,9 @@
-
-
 server:
   port: 8001
 spring:
-  profiles:
-    active: dev
+  sql:
+    init:
+      enabled: true
   datasource:
     driver-class-name: org.postgresql.Driver
     password: frost123

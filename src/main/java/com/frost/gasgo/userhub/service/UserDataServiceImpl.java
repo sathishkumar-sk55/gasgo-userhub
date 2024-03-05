@@ -1,5 +1,7 @@
 package com.frost.gasgo.userhub.service;
 
+import com.frost.gasgo.commonlib.userhub.UserAuthRequest;
+import com.frost.gasgo.commonlib.userhub.UserAuthResponse;
 import com.frost.gasgo.userhub.customexpection.UserAlreadyExistException;
 import com.frost.gasgo.userhub.customexpection.UserNotFoundException;
 import com.frost.gasgo.userhub.entity.UserData;
@@ -49,5 +51,25 @@ public class UserDataServiceImpl {
                         .lastName(userData.getLastName())
                         .build();
         return new ResponseEntity<UserDataWrapper>(userDataWrapper, HttpStatus.OK);
+    }
+
+    public ResponseEntity<UserAuthResponse> passwordVerifivation(UserAuthRequest userAuth) {
+        UserAuthResponse userAuthResponse;
+        UserData fetchedUser = userDataRepository.findByUsername(userAuth.getUsername());
+        if (fetchedUser != null && userAuth.getPassword().equals(fetchedUser.getPassword())){
+            userAuthResponse =
+                    UserAuthResponse
+                            .builder()
+                            .userId(fetchedUser.getUserId())
+                            .username(fetchedUser.getUsername())
+                            .role("USER")
+                            .token("==aad16as4d9asd1as68d46asd14as684f+6avava=")
+                            .isAuthentication(true)
+                            .build();
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(userAuthResponse);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new UserAuthResponse(false));
+        }
     }
 }

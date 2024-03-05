@@ -21,7 +21,7 @@ public class UserData {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String password;
 
     @Column(length = 30)
